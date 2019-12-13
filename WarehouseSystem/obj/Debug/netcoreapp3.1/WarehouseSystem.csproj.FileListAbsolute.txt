@@ -190,3 +190,8 @@ C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Invoices\Details.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Invoices\Edit.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Invoices\Index.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Create.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Delete.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Details.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Edit.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Roles\Index.cshtml.g.cs
