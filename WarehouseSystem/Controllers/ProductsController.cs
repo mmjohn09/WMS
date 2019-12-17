@@ -54,7 +54,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,DateCreated,Name,Description,Price,QtyOnHand,MinimumQuantity,LeadTime")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,Name,Description,Price,QtyOnHand,MinimumQuantity")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,DateCreated,Name,Description,Price,QtyOnHand,MinimumQuantity,LeadTime")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Name,Description,Price,QtyOnHand,MinimumQuantity")] Product product)
         {
             if (id != product.ProductId)
             {

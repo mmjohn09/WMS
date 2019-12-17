@@ -13,12 +13,6 @@ namespace WarehouseSystem.Models
         public int ProductId { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [Display(Name = "Date Added")]
-        public DateTime DateCreated { get; set; }
-
-        [Required]
         [StringLength(255)]
         [RegularExpression(@"([a-zA-Z0-9_\s\-]*)$", ErrorMessage = "Special Characters are not permitted: !@#$%^&*()")]
         public string Name { get; set; }
@@ -41,12 +35,9 @@ namespace WarehouseSystem.Models
         [Display(Name = "Minimum Quantity")]
         public int MinimumQuantity { get; set; }
 
-        [Required]
-        [Display(Name = "Lead Time")]
-        public int LeadTime { get; set; }
 
-        [Required]
         public Supplier Supplier { get; set; }
+      
 
     }
 }

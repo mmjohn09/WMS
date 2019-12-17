@@ -54,7 +54,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,DateCreated,FirstName,LastName,Address")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Address,City,State,ZipCode")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,DateCreated,FirstName,LastName,Address")] Customer customer)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FirstName,LastName,Address,City,State,ZipCode")] Customer customer)
         {
             if (id != customer.CustomerId)
             {
