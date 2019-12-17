@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WarehouseSystem.Data;
 using WarehouseSystem.Models;
+using WarehouseSystem.Models.ViewModels;
 
 namespace WarehouseSystem.Controllers
 {
@@ -46,7 +47,8 @@ namespace WarehouseSystem.Controllers
         // GET: Purchases/Create
         public IActionResult Create()
         {
-            return View();
+            var viewModel = new PurchaseCreateViewModel();
+            return View(viewModel);
         }
 
         // POST: Purchases/Create
@@ -54,8 +56,9 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PurchaseId,Count,PurchaseDate,PoNumber,Cost")] Purchase purchase)
+        public async Task<IActionResult> Create(PurchaseCreateViewModel viewModel)
         {
+            var purchase = viewModel.Purchase;
             if (ModelState.IsValid)
             {
                 _context.Add(purchase);
@@ -86,7 +89,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PurchaseId,Count,PurchaseDate,PoNumber,Cost")] Purchase purchase)
+        public async Task<IActionResult> Edit(int id, [Bind("PurchaseId,PoNumber,PurchaseDate,Count,Cost")] Purchase purchase)
         {
             if (id != purchase.PurchaseId)
             {

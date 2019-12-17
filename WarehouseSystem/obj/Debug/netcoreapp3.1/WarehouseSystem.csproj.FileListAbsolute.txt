@@ -165,11 +165,6 @@ C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Details.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Edit.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Orders\Index.cshtml.g.cs
-C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Create.cshtml.g.cs
-C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Delete.cshtml.g.cs
-C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Details.cshtml.g.cs
-C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Edit.cshtml.g.cs
-C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Index.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Receipts\Create.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Receipts\Delete.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Receipts\Details.cshtml.g.cs
@@ -199,3 +194,8 @@ C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Products\Edit.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Create.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Delete.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Details.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Edit.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Purchases\Index.cshtml.g.cs
