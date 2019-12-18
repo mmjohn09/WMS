@@ -44,6 +44,11 @@
                 <span asp-validation-for="Product.SupplierId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Product.isActive" class="control-label"></label>
+                <input asp-for="Product.isActive" class="form-control" />
+                <span asp-validation-for="Product.isActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

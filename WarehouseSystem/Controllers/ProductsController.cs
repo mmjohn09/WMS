@@ -23,7 +23,9 @@ namespace WarehouseSystem.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            return View(await _context.Product
+                .Include(p => p.Supplier)
+                .ToListAsync());
         }
 
         // GET: Products/Details/5

@@ -39,5 +39,13 @@ namespace WarehouseSystem.Models
         public Supplier Supplier { get; set; }
         public int SupplierId { get; set; }
 
+        [Display(Name = "Active")]
+        public bool isActive { get; set; }
+
+        public Product()
+        {
+            isActive = true;
+        }
+
     }
 }

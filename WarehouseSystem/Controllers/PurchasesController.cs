@@ -7,25 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WarehouseSystem.Data;
 using WarehouseSystem.Models;
+using WarehouseSystem.Models.ViewModels;
 
 namespace WarehouseSystem.Controllers
 {
-    public class RolesController : Controller
+    public class PurchasesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RolesController(ApplicationDbContext context)
+        public PurchasesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Roles
+        // GET: Purchases
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Role.ToListAsync());
+            return View(await _context.Purchase.ToListAsync());
         }
 
-        // GET: Roles/Details/5
+        // GET: Purchases/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,45 @@ namespace WarehouseSystem.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Role
-                .FirstOrDefaultAsync(m => m.RoleId == id);
-            if (role == null)
+            var purchase = await _context.Purchase
+                .FirstOrDefaultAsync(m => m.PurchaseId == id);
+            if (purchase == null)
             {
                 return NotFound();
             }
 
-            return View(role);
+            return View(purchase);
         }
 
-        // GET: Roles/Create
-        public IActionResult Create()
+        // GET: Purchases/Create
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var viewModel = new PurchaseCreateViewModel()
+            {
+                PurchaseDate = DateTime.Now,
+                Products = await _context.Product.ToListAsync()
+            };
+
+            return View(viewModel);
         }
 
-        // POST: Roles/Create
+        // POST: Purchases/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoleId,UserRole")] Role role)
+        public async Task<IActionResult> Create([Bind("PurchaseId,PoNumber,PurchaseDate,Count,Cost")] Purchase purchase)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(role);
+                _context.Add(purchase);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(role);
+            return View(purchase);
         }
 
-        // GET: Roles/Edit/5
+        // GET: Purchases/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +80,22 @@ namespace WarehouseSystem.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Role.FindAsync(id);
-            if (role == null)
+            var purchase = await _context.Purchase.FindAsync(id);
+            if (purchase == null)
             {
                 return NotFound();
             }
-            return View(role);
+            return View(purchase);
         }
 
-        // POST: Roles/Edit/5
+        // POST: Purchases/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoleId,UserRole")] Role role)
+        public async Task<IActionResult> Edit(int id, [Bind("PurchaseId,PoNumber,PurchaseDate,Count,Cost")] Purchase purchase)
         {
-            if (id != role.RoleId)
+            if (id != purchase.PurchaseId)
             {
                 return NotFound();
             }
@@ -97,12 +104,12 @@ namespace WarehouseSystem.Controllers
             {
                 try
                 {
-                    _context.Update(role);
+                    _context.Update(purchase);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoleExists(role.RoleId))
+                    if (!PurchaseExists(purchase.PurchaseId))
                     {
                         return NotFound();
                     }
@@ -113,10 +120,10 @@ namespace WarehouseSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(role);
+            return View(purchase);
         }
 
-        // GET: Roles/Delete/5
+        // GET: Purchases/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +131,30 @@ namespace WarehouseSystem.Controllers
                 return NotFound();
             }
 
-            var role = await _context.Role
-                .FirstOrDefaultAsync(m => m.RoleId == id);
-            if (role == null)
+            var purchase = await _context.Purchase
+                .FirstOrDefaultAsync(m => m.PurchaseId == id);
+            if (purchase == null)
             {
                 return NotFound();
             }
 
-            return View(role);
+            return View(purchase);
         }
 
-        // POST: Roles/Delete/5
+        // POST: Purchases/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var role = await _context.Role.FindAsync(id);
-            _context.Role.Remove(role);
+            var purchase = await _context.Purchase.FindAsync(id);
+            _context.Purchase.Remove(purchase);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoleExists(int id)
+        private bool PurchaseExists(int id)
         {
-            return _context.Role.Any(e => e.RoleId == id);
+            return _context.Purchase.Any(e => e.PurchaseId == id);
         }
     }
 }

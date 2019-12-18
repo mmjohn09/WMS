@@ -12,6 +12,7 @@ namespace WarehouseSystem.Models
         public int SupplierId { get; set; }
 
         [Required]
+        [Display(Name = "Vendor")]
         public string Name { get; set; }
 
         [Display(Name = "Payment Terms")]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,8 +13,9 @@ namespace WarehouseSystem.Models
         public int PurchaseId { get; set; }
 
         [Required]
-        [Display(Name = "PO Number")]
-        public string PoNumber { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Display(Name = "Purchase Order Number")]
+        public int PoNumber { get; set; }
 
         [Required]
         [Display(Name = "Purchase Date")]
@@ -21,6 +23,8 @@ namespace WarehouseSystem.Models
 
         [Required]
         public Product Product { get; set; }
+
+        public int ProductId { get; set; }
 
 
         [Required]
@@ -30,6 +34,7 @@ namespace WarehouseSystem.Models
 
         [Required]
         public Supplier Supplier { get; set; }
+        public int SupplierId { get; set; }
         public Invoice Invoice { get; set; }
     }
 }
