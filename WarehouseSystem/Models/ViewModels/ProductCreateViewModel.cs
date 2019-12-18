@@ -16,7 +16,14 @@ namespace WarehouseSystem.Models.ViewModels
         {
             get
             {
-                return Suppliers?.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())).ToList();
+                var SupplierOptions = Suppliers?.Select(s => new SelectListItem(s.Name, s.SupplierId.ToString())).ToList();
+                SupplierOptions.Insert(0, new SelectListItem()
+                {
+                    Value = string.Empty,
+                    Text = "Select Vendor"
+                });
+
+                return (SupplierOptions);
             }
         }
 

@@ -194,3 +194,4 @@ C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Suppliers\Details.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Suppliers\Edit.cshtml.g.cs
 C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Suppliers\Index.cshtml.g.cs
+C:\Users\Maggie34\workspace\WarehouseSystem\WarehouseSystem\obj\Debug\netcoreapp3.1\Razor\Views\Products\GetProductsBySupplier.cshtml.g.cs

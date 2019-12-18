@@ -84,7 +84,15 @@ namespace WarehouseSystem.Controllers
             {
                 return NotFound();
             }
-            return View(product);
+            var suppliers = await _context.Supplier.ToListAsync();
+            var viewModel = new ProductEditViewModel()
+            {
+                Product = product,
+                Suppliers = suppliers
+            };
+
+
+            return View(viewModel);
         }
 
         // POST: Products/Edit/5
@@ -92,9 +100,9 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Name,Description,Price,QtyOnHand,MinimumQuantity")] Product product)
+        public async Task<IActionResult> Edit(int id, ProductEditViewModel productEditViewModel)
         {
-            if (id != product.ProductId)
+            if (id != productEditViewModel.Product.ProductId)
             {
                 return NotFound();
             }
@@ -103,12 +111,12 @@ namespace WarehouseSystem.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    _context.Update(productEditViewModel.Product);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.ProductId))
+                    if (!ProductExists(productEditViewModel.Product.ProductId))
                     {
                         return NotFound();
                     }
@@ -119,7 +127,8 @@ namespace WarehouseSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+
+            return View(productEditViewModel);
         }
 
         // GET: Products/Delete/5
@@ -155,6 +164,15 @@ namespace WarehouseSystem.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
+
+        //Get all Products by supplier
+        public async Task<IActionResult> GetProductsBySupplier()
+        {
+            return View(await _context.Product
+                .Where(p => p.SupplierId == p.Supplier.SupplierId)
+                .ToListAsync());
+        }
+
 
     }
 }

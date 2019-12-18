@@ -20,7 +20,7 @@
             <th></th>
             <td>
                 <a asp-action="Details" asp-route-id="@item.SupplierId">Contact Info</a> |
-                <a asp-action="">Products</a> |
+                <a asp-action="GetProductsBySupplier" asp-route-id="@item.SupplierId">Products</a> |
                 <a asp-action="">Purchase Orders</a>
             </td>
         </tr>

@@ -1,4 +1,4 @@
-﻿@model WarehouseSystem.Models.Product
+﻿@model WarehouseSystem.Models.ViewModels.ProductEditViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -11,32 +11,37 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+            @Html.HiddenFor(p => p.Product.ProductId)
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProductId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="QtyOnHand" class="control-label"></label>
-                <input asp-for="QtyOnHand" class="form-control" />
-                <span asp-validation-for="QtyOnHand" class="text-danger"></span>
+                <label asp-for="Product.QtyOnHand" class="control-label"></label>
+                <input asp-for="Product.QtyOnHand" class="form-control" />
+                <span asp-validation-for="Product.QtyOnHand" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MinimumQuantity" class="control-label"></label>
-                <input asp-for="MinimumQuantity" class="form-control" />
-                <span asp-validation-for="MinimumQuantity" class="text-danger"></span>
+                <label asp-for="Product.MinimumQuantity" class="control-label"></label>
+                <input asp-for="Product.MinimumQuantity" class="form-control" />
+                <span asp-validation-for="Product.MinimumQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Supplier" class="control-label"></label>
+                <select asp-for="Product.SupplierId" class="form-control" asp-items="@Model.SupplierOptions"></select>
+                <span asp-validation-for="Product.SupplierId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -52,3 +57,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

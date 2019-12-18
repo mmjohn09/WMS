@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WarehouseSystem.Models.Product>
+
+@{
+    ViewData["Title"] = "GetProductsBySupplier";
+}
+
+<h1>GetProductsBySupplier</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyOnHand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumQuantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtyOnHand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumQuantity)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
