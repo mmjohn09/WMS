@@ -18,12 +18,14 @@ namespace WarehouseSystem.Models
         public string PaymentTerms { get; set; }
 
         [Required]
-        public string Address { get; set; }
+        public string Street { get; set; }
 
-        public List<Product> Products { get; set; }
+        public string City { get; set; }
 
-        public List<Purchase> Purchases { get; set; }
-        
+        public string State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        public string ZipCode {get; set;}
         
         [Display(Name = "Account Rep")]
         public string AccountRep { get; set; }
@@ -31,5 +33,9 @@ namespace WarehouseSystem.Models
         [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public List<Product> Products { get; set; }
+
+        public List<Purchase> Purchases { get; set; }
     }
 }

@@ -35,9 +35,8 @@ namespace WarehouseSystem.Models
         [Display(Name = "Minimum Quantity")]
         public int MinimumQuantity { get; set; }
 
-
         public Supplier Supplier { get; set; }
-      
+        public int SupplierId { get; set; }
 
     }
 }

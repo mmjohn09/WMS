@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WarehouseSystem.Data;
 using WarehouseSystem.Models;
+using WarehouseSystem.Models.ViewModels;
 
 namespace WarehouseSystem.Controllers
 {
@@ -44,9 +45,14 @@ namespace WarehouseSystem.Controllers
         }
 
         // GET: Products/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            var viewModel = new ProductCreateViewModel()
+            {
+                Suppliers = await _context.Supplier.ToListAsync()
+            };
+
+            return View(viewModel);
         }
 
         // POST: Products/Create
@@ -54,7 +60,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,Name,Description,Price,QtyOnHand,MinimumQuantity")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
             {
@@ -149,5 +155,6 @@ namespace WarehouseSystem.Controllers
         {
             return _context.Product.Any(e => e.ProductId == id);
         }
+
     }
 }
