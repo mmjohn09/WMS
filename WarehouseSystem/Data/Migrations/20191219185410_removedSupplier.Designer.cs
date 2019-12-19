@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WarehouseSystem.Data;
 
 namespace WarehouseSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191219185410_removedSupplier")]
+    partial class removedSupplier
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -382,7 +384,7 @@ namespace WarehouseSystem.Data.Migrations
                     b.Property<double>("Total")
                         .HasColumnType("float");
 
-                    b.Property<int?>("invoiceId")
+                    b.Property<int>("invoiceId")
                         .HasColumnType("int");
 
                     b.HasKey("PurchaseId");
@@ -564,7 +566,9 @@ namespace WarehouseSystem.Data.Migrations
 
                     b.HasOne("WarehouseSystem.Models.Invoice", "Invoice")
                         .WithMany()
-                        .HasForeignKey("invoiceId");
+                        .HasForeignKey("invoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("WarehouseSystem.Models.Receipt", b =>

@@ -13,7 +13,6 @@ namespace WarehouseSystem.Models
         public int PurchaseId { get; set; }
 
         [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [Display(Name = "Purchase Order Number")]
         public int PoNumber { get; set; }
 
@@ -26,15 +25,11 @@ namespace WarehouseSystem.Models
 
         public int ProductId { get; set; }
 
-
         [Required]
         public int Count { get; set; }
 
-        public double Cost { get; set; }
+        public double Total { get; set; }
 
-        [Required]
-        public Supplier Supplier { get; set; }
-        public int SupplierId { get; set; }
         public Invoice Invoice { get; set; }
     }
 }

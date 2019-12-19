@@ -48,8 +48,7 @@ namespace WarehouseSystem.Controllers
         public async Task<IActionResult> Create()
         {
             var viewModel = new PurchaseCreateViewModel()
-            {
-                PurchaseDate = DateTime.Now,
+            { 
                 Products = await _context.Product.ToListAsync()
             };
 
@@ -61,15 +60,19 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PurchaseId,PoNumber,PurchaseDate,Count,Cost")] Purchase purchase)
+        public async Task<IActionResult> Create(PurchaseCreateViewModel purchaseCreateViewModel)
         {
+            ModelState.Remove("Purchase.Product");
+            ModelState.Remove("Purchase.Invoice");
+            ModelState.Remove("Purchase.Product.SupplierId");
+
             if (ModelState.IsValid)
             {
-                _context.Add(purchase);
+               _context.Add(purchaseCreateViewModel.Purchase);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(purchase);
+            return View(purchaseCreateViewModel);
         }
 
         // GET: Purchases/Edit/5

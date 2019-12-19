@@ -11,25 +11,19 @@ namespace WarehouseSystem.Models.ViewModels
     {
         public Purchase Purchase { get; set; }
 
-        [Display(Name = "Date")]
-        public DateTime PurchaseDate { get; set; }
-
-        [Display(Name = "Purchase Order Number")]
-        public string PoNumber { get; set; }
-
         public List<Product> Products { get; set; }
         public List<SelectListItem> ProductOptions
         {
             get
             {
                 var ProductOptions = Products?.Select(p => new SelectListItem(p.Name, p.ProductId.ToString())).ToList();
-                ProductOptions.Insert(0, new SelectListItem()
+                ProductOptions?.Insert(0, new SelectListItem()
                 {
                     Value = string.Empty,
                     Text = "Select Product"
                 });
 
-                return (ProductOptions);
+                return ProductOptions;
             }
         }
     }
