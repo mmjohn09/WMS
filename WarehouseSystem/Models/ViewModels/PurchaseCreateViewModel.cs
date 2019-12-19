@@ -10,6 +10,7 @@ namespace WarehouseSystem.Models.ViewModels
     public class PurchaseCreateViewModel
     {
         public Purchase Purchase { get; set; }
+        public DateTime PurchaseDate { get; set; }
 
         public List<Product> Products { get; set; }
         public List<SelectListItem> ProductOptions

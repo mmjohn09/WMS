@@ -28,6 +28,7 @@ namespace WarehouseSystem.Models
         [Required]
         public int Count { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public double Total { get; set; }
 
         public Invoice Invoice { get; set; }

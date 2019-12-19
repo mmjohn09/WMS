@@ -23,7 +23,11 @@ namespace WarehouseSystem.Controllers
         // GET: Purchases
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Purchase.ToListAsync());
+            return View(await _context.Purchase
+                .Include(p => p.Product)
+                    .ThenInclude(pr => pr.Supplier)
+                
+                .ToListAsync());
         }
 
         // GET: Purchases/Details/5
@@ -49,6 +53,7 @@ namespace WarehouseSystem.Controllers
         {
             var viewModel = new PurchaseCreateViewModel()
             { 
+                PurchaseDate = DateTime.Now,
                 Products = await _context.Product.ToListAsync()
             };
 
@@ -64,7 +69,7 @@ namespace WarehouseSystem.Controllers
         {
             ModelState.Remove("Purchase.Product");
             ModelState.Remove("Purchase.Invoice");
-            ModelState.Remove("Purchase.Product.SupplierId");
+            //ModelState.Remove("Purchase.Product.SupplierId");
 
             if (ModelState.IsValid)
             {
