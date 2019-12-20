@@ -12,7 +12,9 @@ namespace WarehouseSystem.Models
         public int ReceiptId { get; set; }
 
         public Purchase Purchase { get; set; } 
-        public DateTime ReceiptDate { get; set; }
+        public int PurchaseId { get; set; }
+        public DateTime ReceiveDate { get; set; }
+        public int QtyReceived { get; set; }
         public ApplicationUser User { get; set; }
 
         [Display(Name = "Received By")]

@@ -32,5 +32,10 @@ namespace WarehouseSystem.Models
         public double Total { get; set; }
 
         public Invoice Invoice { get; set; }
+        public Supplier Supplier { get; set;}
+        public int SupplierId { get; set; }
+
+        [Display(Name = "Received")]
+        public bool isReceived { get; set; }
     }
 }

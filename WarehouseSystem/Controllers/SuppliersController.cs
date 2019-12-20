@@ -149,5 +149,20 @@ namespace WarehouseSystem.Controllers
         {
             return _context.Supplier.Any(e => e.SupplierId == id);
         }
+
+        public async Task<IActionResult> GetProductsBySupplier(int id)
+        {
+            return View(await _context.Product
+                .Where(p => p.SupplierId == id)
+                .ToListAsync());
+        }
+
+
+        //public async Task<IActionResult> GetPurchaseOrdersBySupplier(int id)
+        //{
+        //    return View(await _context.Purchase
+        //        .Where(p => p.SupplierId == id)
+        //        .ToListAsync());
+        //}
     }
 }

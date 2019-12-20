@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WarehouseSystem.Data;
 
 namespace WarehouseSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191220153820_receipts")]
+    partial class receipts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -385,9 +387,6 @@ namespace WarehouseSystem.Data.Migrations
                     b.Property<int?>("invoiceId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("isReceived")
-                        .HasColumnType("bit");
-
                     b.HasKey("PurchaseId");
 
                     b.HasIndex("ProductId");
@@ -412,7 +411,7 @@ namespace WarehouseSystem.Data.Migrations
                     b.Property<int>("QtyReceived")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ReceiveDate")
+                    b.Property<DateTime>("ReceiptDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")

@@ -25,7 +25,7 @@ namespace WarehouseSystem.Controllers
         {
             return View(await _context.Purchase
                 .Include(p => p.Product)
-                    .ThenInclude(pr => pr.Supplier)
+                .Include(pr => pr.Supplier)
                 
                 .ToListAsync());
         }
@@ -39,6 +39,7 @@ namespace WarehouseSystem.Controllers
             }
 
             var purchase = await _context.Purchase
+                .Include(p => p.Product)
                 .FirstOrDefaultAsync(m => m.PurchaseId == id);
             if (purchase == null)
             {
@@ -54,6 +55,7 @@ namespace WarehouseSystem.Controllers
             var viewModel = new PurchaseCreateViewModel()
             { 
                 PurchaseDate = DateTime.Now,
+                Suppliers = await _context.Supplier.ToListAsync(),
                 Products = await _context.Product.ToListAsync()
             };
 
@@ -163,6 +165,19 @@ namespace WarehouseSystem.Controllers
         private bool PurchaseExists(int id)
         {
             return _context.Purchase.Any(e => e.PurchaseId == id);
+        }
+
+        public async Task<IActionResult> ReceivePurchaseOrder(int id)
+        {
+            var purchase = await _context.Purchase.FindAsync(id);
+            var product = await _context.Product.FindAsync(purchase.ProductId);
+            purchase.isReceived = true;
+            product.QtyOnHand += purchase.Count;
+            _context.Purchase.Update(purchase);
+            _context.Product.Update(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

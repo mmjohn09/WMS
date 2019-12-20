@@ -22,7 +22,7 @@ namespace WarehouseSystem.Controllers
         // GET: Receipts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Receipt.Include(r => r.User);
+            var applicationDbContext = _context.Receipt.Include(r => r.Purchase).Include(r => r.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace WarehouseSystem.Controllers
             }
 
             var receipt = await _context.Receipt
+                .Include(r => r.Purchase)
                 .Include(r => r.User)
                 .FirstOrDefaultAsync(m => m.ReceiptId == id);
             if (receipt == null)
@@ -48,6 +49,7 @@ namespace WarehouseSystem.Controllers
         // GET: Receipts/Create
         public IActionResult Create()
         {
+            ViewData["PurchaseId"] = new SelectList(_context.Purchase, "PurchaseId", "PurchaseId");
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
             return View();
         }
@@ -57,7 +59,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReceiptId,ReceiptDate,UserId")] Receipt receipt)
+        public async Task<IActionResult> Create([Bind("ReceiptId,PurchaseId,ReceiveDate,QtyReceived,UserId")] Receipt receipt)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +67,7 @@ namespace WarehouseSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PurchaseId"] = new SelectList(_context.Purchase, "PurchaseId", "PurchaseId", receipt.PurchaseId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", receipt.UserId);
             return View(receipt);
         }
@@ -82,6 +85,7 @@ namespace WarehouseSystem.Controllers
             {
                 return NotFound();
             }
+            ViewData["PurchaseId"] = new SelectList(_context.Purchase, "PurchaseId", "PurchaseId", receipt.PurchaseId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", receipt.UserId);
             return View(receipt);
         }
@@ -91,7 +95,7 @@ namespace WarehouseSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReceiptId,ReceiptDate,UserId")] Receipt receipt)
+        public async Task<IActionResult> Edit(int id, [Bind("ReceiptId,PurchaseId,ReceiveDate,QtyReceived,UserId")] Receipt receipt)
         {
             if (id != receipt.ReceiptId)
             {
@@ -118,6 +122,7 @@ namespace WarehouseSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PurchaseId"] = new SelectList(_context.Purchase, "PurchaseId", "PurchaseId", receipt.PurchaseId);
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", receipt.UserId);
             return View(receipt);
         }
@@ -131,6 +136,7 @@ namespace WarehouseSystem.Controllers
             }
 
             var receipt = await _context.Receipt
+                .Include(r => r.Purchase)
                 .Include(r => r.User)
                 .FirstOrDefaultAsync(m => m.ReceiptId == id);
             if (receipt == null)
